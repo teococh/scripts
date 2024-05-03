@@ -85,7 +85,7 @@ mkdir -p $DATA_DIR
 podman container run -d \
     --pod $POD_NAME \
     --name nextcloud \
-    -v $DATA_DIR:$VOLUME_DIR \  # Montar el volumen
+    -v $DATA_DIR:$VOLUME_DIR \
     -e POSTGRES_HOST="127.0.0.1" \
     -e POSTGRES_DB="nextcloud" \
     -e POSTGRES_USER="nextcloud" \
