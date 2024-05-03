@@ -61,9 +61,12 @@ while getopts ":p:u:a:b:d:v:o:n:h" opt; do
     esac
 done
 
+# Crear pod
+podman pod create --name $POD_NAME -p $PORT:80
+
 # Crear contenedor de PostgreSQL
 podman container run -d \
-    --pod cloud-formini \
+    --pod $POD_NAME \
     --name nextcloud_db \
     -e POSTGRES_USER="$POSTGRES_USER" \
     -e POSTGRES_PASSWORD=$POSTGRES_PASS \
@@ -71,7 +74,7 @@ podman container run -d \
 
 # Crear contenedor de Redis
 podman container run -d \
-    --pod cloud-formini \
+    --pod $POD_NAME \
     --name Nextcloud_redis \
     redis
 
