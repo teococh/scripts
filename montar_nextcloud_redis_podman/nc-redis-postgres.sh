@@ -80,6 +80,7 @@ podman container run -d \
 
 # Crear directorio para los datos de Nextcloud si no existe
 mkdir -p $DATA_DIR
+chmod 777 $DATA_DIR
 
 # Crear contenedor de Nextcloud con el volumen montado
 podman container run -d \
@@ -94,6 +95,7 @@ podman container run -d \
     -e NEXTCLOUD_ADMIN_PASSWORD=$NEXTCLOUD_ADMIN_PASSWORD \
     -e NEXTCLOUD_TRUSTED_DOMAINS=$(hostname -I | awk '{print $1}') \
     -e REDIS_HOST="127.0.0.1" \
+    -u $(id -u):$(id -g) \
     nextcloud
 
 # Abrir el puerto en el firewall
