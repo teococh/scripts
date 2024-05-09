@@ -86,7 +86,6 @@ chmod 777 $DATA_DIR
 podman container run -d \
     --pod $POD_NAME \
     --name nextcloud \
-    -v $DATA_DIR:$VOLUME_DIR \
     -e POSTGRES_HOST="127.0.0.1" \
     -e POSTGRES_DB="nextcloud" \
     -e POSTGRES_USER="nextcloud" \
@@ -95,7 +94,6 @@ podman container run -d \
     -e NEXTCLOUD_ADMIN_PASSWORD=$NEXTCLOUD_ADMIN_PASSWORD \
     -e NEXTCLOUD_TRUSTED_DOMAINS=$(hostname -I | awk '{print $1}') \
     -e REDIS_HOST="127.0.0.1" \
-    -u $(id -u):$(id -g) \
     nextcloud
 
 # Abrir el puerto en el firewall
