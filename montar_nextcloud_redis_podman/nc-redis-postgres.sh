@@ -68,8 +68,9 @@ podman pod create --name $POD_NAME -p $PORT:80
 podman container run -d \
     --pod $POD_NAME \
     --name nextcloud_db \
-    -e POSTGRES_USER="$POSTGRES_USER" \
-    -e POSTGRES_PASSWORD=$POSTGRES_PASS \
+    -e POSTGRES_USER="nextcloud" \
+    -e POSTGRES_PASSWORD="nextcloud" \
+    -e POSTGRES_DB="nextcloud_db" \
     postgres
 
 # Crear contenedor de Redis
@@ -87,9 +88,9 @@ podman container run -d \
     --pod $POD_NAME \
     --name nextcloud \
     -e POSTGRES_HOST="127.0.0.1" \
-    -e POSTGRES_DB="nextcloud" \
+    -e POSTGRES_DB="nextcloud_db" \
     -e POSTGRES_USER="nextcloud" \
-    -e POSTGRES_PASSWORD=$POSTGRES_PASS \
+    -e POSTGRES_PASSWORD="nextcloud" \
     -e NEXTCLOUD_ADMIN_USER=$NEXTCLOUD_ADMIN_USER \
     -e NEXTCLOUD_ADMIN_PASSWORD=$NEXTCLOUD_ADMIN_PASSWORD \
     -e NEXTCLOUD_TRUSTED_DOMAINS=$(hostname -I | awk '{print $1}') \
