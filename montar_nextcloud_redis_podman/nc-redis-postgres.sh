@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Definir variables predeterminadas
-POSTGRES_PASS="Pil20000"
+POSTGRES_PASS="admin"
 POSTGRES_USER="nextcloud"
-NEXTCLOUD_ADMIN_USER="pilevante"
-NEXTCLOUD_ADMIN_PASSWORD="Pil20000"
+NEXTCLOUD_ADMIN_USER="admin"
+NEXTCLOUD_ADMIN_PASSWORD="admin"
 PORT="9999"
 DATA_DIR="/mnt/nc/data"
 CONFIG_DIR="/mnt/nc/config"
