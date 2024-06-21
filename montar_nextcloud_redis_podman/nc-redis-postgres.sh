@@ -15,10 +15,10 @@ POD_NAME="nc"
 function show_help {
     echo "Uso: $0 [-p PASSWORD] [-u USER] [-a ADMIN_USER] [-b ADMIN_PASSWORD] [-d DATA_DIR] [-c CONFIG_DIR] [-r DB_DIR] [-o PORT] [-n POD_NAME]"
     echo "Options:"
-    echo "  -p  Contraseña para la base de datos PostgreSQL (por defecto: Pil20000)"
+    echo "  -p  Contraseña para la base de datos PostgreSQL (por defecto: admin)"
     echo "  -u  Usuario para la base de datos PostgreSQL (por defecto: nextcloud)"
-    echo "  -a  Usuario administrador de Nextcloud (por defecto: pilevante)"
-    echo "  -b  Contraseña del usuario administrador de Nextcloud (por defecto: Pil20000)"
+    echo "  -a  Usuario administrador de Nextcloud (por defecto: admin)"
+    echo "  -b  Contraseña del usuario administrador de Nextcloud (por defecto: admin)"
     echo "  -d  Directorio donde se almacenarán los datos de Nextcloud (por defecto: /mnt/nc/data)"
     echo "  -c  Directorio donde se almacenará la configuración de Nextcloud (por defecto: /mnt/nc/config)"
     echo "  -r  Directorio donde se almacenarán los datos de la base de datos PostgreSQL (por defecto: /mnt/nc/db)"
@@ -119,10 +119,10 @@ firewall-cmd --reload
 cat << 'EOF' > /usr/local/bin/start_nextcloud_pod.sh
 #!/bin/bash
 
-POSTGRES_PASS="Pil20000"
+POSTGRES_PASS="admin"
 POSTGRES_USER="nextcloud"
-NEXTCLOUD_ADMIN_USER="pilevante"
-NEXTCLOUD_ADMIN_PASSWORD="Pil20000"
+NEXTCLOUD_ADMIN_USER="admin"
+NEXTCLOUD_ADMIN_PASSWORD="admin"
 PORT="9999"
 DATA_DIR="/mnt/nc/data"
 CONFIG_DIR="/mnt/nc/config"
